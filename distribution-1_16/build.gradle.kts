@@ -12,9 +12,9 @@ repositories {
 
 dependencies {
     compileOnly(libs.paper.get1().get16())
-    implementation(project(projects.deluxeMenusModern.path, "downgradedElements"))
+    implementation(project(projects.deluxeMenusModern.path, "downgraded"))
     implementation(files(rootDir.resolve(".lib").resolve("MiniMessage-4.1.0.jar")))
-    implementation("xyz.wagyourtail.jvmdowngrader:jvmdowngrader-java-api:1.3.6:downgraded-17")
+    implementation(variantOf(libs.jvmdowngrader) { classifier("downgraded-17") })
 }
 
 tasks.shadowJar {

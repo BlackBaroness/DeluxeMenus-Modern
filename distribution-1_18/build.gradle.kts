@@ -12,8 +12,8 @@ repositories {
 
 dependencies {
     compileOnly(libs.paper.get1().get18())
-    implementation(project(projects.deluxeMenusModern.path, "downgradedElements"))
-    implementation("xyz.wagyourtail.jvmdowngrader:jvmdowngrader-java-api:1.3.6:downgraded-17")
+    implementation(project(projects.deluxeMenusModern.path, "downgraded"))
+    implementation(variantOf(libs.jvmdowngrader) { classifier("downgraded-17") })
 }
 
 tasks.shadowJar {

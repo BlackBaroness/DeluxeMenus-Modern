@@ -40,7 +40,7 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ github.ref_name }}-build.${{ github.run_number }}
-          name: 'v${{ steps.get_version.outputs.version }}'
+          name: '${{ steps.get_version.outputs.version }}'
           generate_release_notes: true
           body: |
             # ❓ What file to choose?

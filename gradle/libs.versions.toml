@@ -27,6 +27,7 @@ nexo = { module = "com.nexomc:nexo", version = "1.21.0" }
 oraxen = { module = "io.th0rgal:oraxen", version = "1.211.0" }
 simpleItemGenerator = { module = "io.github.valerashimchuck:simpleitemgenerator-api", version = "1.10.0" }
 authlib = { module = "com.mojang:authlib", version = "3.11.50" }
+jvmdowngrader = { module = "xyz.wagyourtail.jvmdowngrader:jvmdowngrader-java-api", version = "1.3.6" }
 craftEngine-core = { module = "net.momirealms:craft-engine-core", version.ref = "craftEngine" }
 craftEngine-bukkit = { module = "net.momirealms:craft-engine-bukkit", version.ref = "craftEngine" }
 

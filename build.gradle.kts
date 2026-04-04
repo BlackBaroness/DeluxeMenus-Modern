@@ -43,13 +43,10 @@ jvmdg {
     downgradeTo = JavaVersion.VERSION_17
 }
 
-val downgradedElements by configurations.creating {
+configurations.create("downgraded") {
     isCanBeConsumed = true
     isCanBeResolved = false
-
-    extendsFrom(
-        configurations.implementation.get()
-    )
+    extendsFrom(configurations.implementation.get())
 
     attributes {
         attribute(Usage.USAGE_ATTRIBUTE, objects.named(Usage.JAVA_RUNTIME))
@@ -68,5 +65,5 @@ tasks.register("printVersion") {
 }
 
 allprojects {
-    version = "1.14.2-${System.getenv()["BUILD_ID"] ?: "DEV"}"
+    version = "1.14.2-MODERN-${System.getenv()["BUILD_ID"] ?: "DEV"}"
 }
