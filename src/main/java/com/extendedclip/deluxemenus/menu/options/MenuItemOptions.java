@@ -37,6 +37,7 @@ public class MenuItemOptions {
     private final String trimMaterial;
     private final String trimPattern;
 
+    private final String modernUseMiniMessage;
     private final String hideTooltip;
     private final String enchantmentGlintOverride;
     private final String rarity;
@@ -100,6 +101,7 @@ public class MenuItemOptions {
         this.rgb = builder.rgb;
         this.trimMaterial = builder.trimMaterial;
         this.trimPattern = builder.trimPattern;
+        this.modernUseMiniMessage = builder.modernUseMiniMessage;
         this.hideTooltip = builder.hideTooltip;
         this.enchantmentGlintOverride = builder.enchantmentGlintOverride;
         this.rarity = builder.rarity;
@@ -204,6 +206,10 @@ public class MenuItemOptions {
 
     public @NotNull Optional<String> hideTooltip() {
         return Optional.ofNullable(hideTooltip);
+    }
+
+    public @NotNull Optional<String> modernUseMiniMessage() {
+        return Optional.ofNullable(modernUseMiniMessage);
     }
 
     public @NotNull Optional<String> enchantmentGlintOverride() {
@@ -373,6 +379,7 @@ public class MenuItemOptions {
                 .trimMaterial(this.trimMaterial)
                 .trimPattern(this.trimPattern)
                 .hideTooltip(this.hideTooltip)
+                .modernUseMiniMessage(this.modernUseMiniMessage)
                 .enchantmentGlintOverride(this.enchantmentGlintOverride)
                 .rarity(this.rarity)
                 .tooltipStyle(this.tooltipStyle)
@@ -426,6 +433,7 @@ public class MenuItemOptions {
         private String trimMaterial;
         private String trimPattern;
 
+        private String modernUseMiniMessage;
         private String hideTooltip;
         private String enchantmentGlintOverride;
         private String rarity;
@@ -546,6 +554,11 @@ public class MenuItemOptions {
 
         public MenuItemOptionsBuilder trimPattern(final @Nullable String trimPattern) {
             this.trimPattern = trimPattern;
+            return this;
+        }
+
+        public MenuItemOptionsBuilder modernUseMiniMessage(final @Nullable String modernUseMiniMessage) {
+            this.modernUseMiniMessage = modernUseMiniMessage;
             return this;
         }
 

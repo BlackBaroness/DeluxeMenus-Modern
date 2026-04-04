@@ -7,11 +7,11 @@ import com.extendedclip.deluxemenus.menu.options.LoreAppendMode;
 import com.extendedclip.deluxemenus.menu.options.MenuItemOptions;
 import com.extendedclip.deluxemenus.menu.options.CustomModelDataComponent;
 import com.extendedclip.deluxemenus.nbt.NbtProvider;
-import com.extendedclip.deluxemenus.utils.DebugLevel;
-import com.extendedclip.deluxemenus.utils.ItemUtils;
-import com.extendedclip.deluxemenus.utils.StringUtils;
-import com.extendedclip.deluxemenus.utils.VersionHelper;
+import com.extendedclip.deluxemenus.utils.*;
 import com.google.common.collect.ImmutableMultimap;
+import io.github.blackbaroness.deluxemenusmodern.MiniMessageProvider;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Color;
 import org.bukkit.FireworkEffect;
 import org.bukkit.Material;
@@ -268,9 +268,27 @@ public class MenuItem {
             itemMeta.setCustomModelDataComponent(parseCustomModelDataComponent(this.options.customModelDataComponent().get(), itemMeta.getCustomModelDataComponent(), holder));
         }
 
+        final boolean modernUseMiniMessage;
+        if (this.options.modernUseMiniMessage().isPresent()) {
+            String value = holder.setPlaceholdersAndArguments(this.options.modernUseMiniMessage().get());
+            modernUseMiniMessage = Boolean.parseBoolean(value);
+        } else {
+            modernUseMiniMessage = false;
+        }
+
         if (this.options.displayName().isPresent()) {
             final String displayName = holder.setPlaceholdersAndArguments(this.options.displayName().get());
-            itemMeta.setDisplayName(StringUtils.color(displayName));
+            if (modernUseMiniMessage) {
+                itemMeta.displayName(
+                    AdventureUtils.decorationIfAbsent(
+                        MiniMessageProvider.get().deserialize(displayName),
+                        TextDecoration.ITALIC,
+                        TextDecoration.State.FALSE
+                    )
+                );
+            } else {
+                itemMeta.setDisplayName(StringUtils.color(displayName));
+            }
         }
 
         List<String> lore = new ArrayList<>();
@@ -297,7 +315,21 @@ public class MenuItem {
                 break;
         }
 
-        itemMeta.setLore(lore);
+        if (modernUseMiniMessage) {
+            List<Component> componentLore = new ArrayList<>(lore.size());
+            for (String line : lore) {
+                componentLore.add(
+                    AdventureUtils.decorationIfAbsent(
+                        MiniMessageProvider.get().deserialize(line),
+                        TextDecoration.ITALIC,
+                        TextDecoration.State.FALSE
+                    )
+                );
+            }
+            itemMeta.lore(componentLore);
+        } else {
+            itemMeta.setLore(lore);
+        }
 
         if (this.options.unbreakable()) {
             itemMeta.setUnbreakable(true);

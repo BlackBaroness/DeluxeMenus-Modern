@@ -97,7 +97,7 @@ public class DeluxeMenusConfig {
     private final String separator = File.separator;
     private final File menuDirectory;
     private final DeluxeMenus plugin;
-    private final List<String> exampleMenus = Arrays.asList("basics_menu", "advanced_menu", "requirements_menu"
+    private final List<String> exampleMenus = Arrays.asList("basics_menu", "advanced_menu", "requirements_menu", "modern_menu"
             // more example menus here
     );
 
@@ -637,6 +637,7 @@ public class DeluxeMenusConfig {
                     .nbtInts(c.getStringList(currentPath + "nbt_ints"))
                     .priority(c.getInt(currentPath + "priority", 1))
                     .hideTooltip(c.getString(currentPath + "hide_tooltip", null))
+                    .modernUseMiniMessage(c.getString(currentPath + "modern_use_minimessage", null))
                     .enchantmentGlintOverride(c.getString(currentPath + "enchantment_glint_override", null))
                     .rarity(c.getString(currentPath + "rarity", null))
                     .tooltipStyle(c.getString(currentPath + "tooltip_style", null))

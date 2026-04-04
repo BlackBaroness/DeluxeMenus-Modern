@@ -2,7 +2,7 @@ plugins {
     id("buildlogic.java-17")
     id("buildlogic.fatjar")
     id("buildlogic.plugin-yml")
-    alias(libs.plugins.runTask.paper)
+    id("buildlogic.run-paper")
 }
 
 repositories {
@@ -27,17 +27,4 @@ bukkit {
 
 tasks.runServer {
     minecraftVersion("1.16.5")
-
-    downloadPlugins {
-        url("https://cdn.modrinth.com/data/lKEzGugV/versions/UmbIiI5H/PlaceholderAPI-2.12.2.jar")
-    }
-
-    jvmArgs = jvmArgs.plus(
-        arrayOf(
-            "-DIReallyKnowWhatIAmDoingISwear",
-            "-DPaper.IgnoreJavaVersion=true",
-            "-Dcom.mojang.eula.agree=true",
-            "-Dfile.encoding=UTF-8",
-        )
-    )
 }

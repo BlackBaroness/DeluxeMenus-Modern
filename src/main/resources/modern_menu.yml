@@ -1,0 +1,27 @@
+open_command: modernmenu
+size: 9
+menu_title: 'Modern Menu'
+
+open_requirement:
+  requirements:
+    permission:
+      type: has permission
+      permission: deluxemenus.admin
+      deny_commands:
+        - '[message] &cYou don''t have permission to do that!'
+
+items:
+  'teststone':
+    material: STONE
+    data: 1
+    slot: 0
+    modern_use_minimessage: true
+    display_name: "<green>This is a special stone"
+    lore:
+      - "<red>Test1"
+      - "<yellow>Test2"
+      - "<rainbow>Test3"
+      - "<shadow:yellow>Hello <shadow:aqua:0.5>World</shadow>!"
+      - "<shadow:#FF5555>This is a <shadow:#55FF55>test!"
+      - "<shadow:#000000FF><b>Thicc"
+      - "<b>and here is a sprite <sprite:\"minecraft:items\":item/porkchop>."

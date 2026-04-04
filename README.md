@@ -1,42 +1,45 @@
-[logo]: https://github.com/HelpChat/DeluxeMenus/assets/52609756/f24ac57d-98db-4d57-a723-791a2654e73f
+## DeluxeMenus-Modern
 
-[issues]: https://github.com/HelpChat/DeluxeMenus/issues
-[licenseImg]: https://img.shields.io/github/license/helpchat/deluxemenus?&logo=github
-[license]: https://github.com/HelpChat/DeluxeMenus/blob/master/LICENSE
+A soft fork of [the original DeluxeMenus](https://github.com/HelpChat/DeluxeMenus) with a few improvements:
 
-[bstatsImg]: https://img.shields.io/bstats/servers/445
-[bstats]: https://bstats.org/plugin/bukkit/DeluxeMenus/445
+- **Supports MiniMessage in menu items**<br>
+  Read further to learn more
 
-[discordImg]: https://img.shields.io/discord/164280494874165248?color=5562e9&logo=discord&logoColor=white
-[discord]: https://helpch.at/discord
-[spigot]: https://www.spigotmc.org/resources/11734/
+- **Designed for Paper 1.16+**<br>
+  Does not support environments with no native Adventure support such as Spigot or older Paper
 
-[ci]: http://ci.extendedclip.com/job/DeluxeMenus/
-[ciImg]: http://ci.extendedclip.com/buildStatus/icon?job=DeluxeMenus
+- **Uses a native Adventure API instead of `BukkitAudiences` wrapper**<br>
+  May improve performance, especially on modern platforms
 
-[contributing]: https://github.com/HelpChat/DeluxeMenus/blob/main/CONTRIBUTING.md
+- **Uses latest dependencies**<br>
+  May improve performance and avoid some bugs
 
-[![logo]][spigot]
+- **Reworked build system**<br>
+  Compiles to Java 17 natively and uses the best build conventions
 
-[![ciImg]][ci] [![bstatsImg]][bstats] [![discordImg]][discord] [![licenseImg]][license] [![GitBook](https://img.shields.io/static/v1?message=Documented%20on%20GitBook&logo=gitbook&logoColor=ffffff&label=%20&labelColor=5c5c5c&color=3F89A1)](https://wiki.helpch.at/helpchat-plugins/deluxemenus)
+- **Removed update checker**
 
+The goal of this fork is simple — modernize DeluxeMenus without touching too much of the original code, so it stays as
+stable as upstream.
 
-# Information
-[DeluxeMenus][spigot] is the all in one inventory GUI menu plugin!
-You can create GUI menus that open with custom commands that will show stats or perform actions specific to the player who opened it. Your menus are fully configurable. You can create menus that show specific items to different players, or perform different actions depending on what javascript requirement they have for the specific slot in a certain GUI.
+> ⚠️ The plugin is still named **DeluxeMenus**, so you can just replace the `.jar` without changing anything.
+>
+> All configs, all addons etc. everything should be fully compatible
 
-DeluxeMenus depends on [PlaceholderAPI](https://www.spigotmc.org/resources/placeholderapi.6245/).
+This repository is periodically synced with the upstream project.
 
-## Contribute
-If you would like to contribute towards DeluxeMenus should you take a look at our [Contributing file][contributing] for the ins and outs on how you can do that and what you need to keep in mind.
+## Using MiniMessage to configure items
 
-## Support
-- [Issue Tracker][issues]
-- [Discord Support][discord]
+```yml
+material: STONE
+modern_use_minimessage: true # put that into an item to enable MM processing
+display_name: "<green>This is a special stone"
+lore:
+    - "<red>test"
+    - "<rainbow>test"
+    - "<white><shadow:aqua:0.5>test"
+    - "<sprite:blocks:block/stone>"
+    - "<head:Notch>"
+```
 
-## Quick Links
-- [Wiki](https://wiki.helpch.at/clips-plugins/deluxemenus/)
-- [CI Server][ci]
-- [Spigot Page][spigot]
-- [Plugin Statistics][bstats]
-
+![](.github/minimessage_demonstration.webp)

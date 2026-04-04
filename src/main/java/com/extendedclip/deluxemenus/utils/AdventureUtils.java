@@ -2,6 +2,7 @@ package com.extendedclip.deluxemenus.utils;
 
 import com.extendedclip.deluxemenus.DeluxeMenus;
 import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.TextDecoration;
 import net.kyori.adventure.text.serializer.gson.GsonComponentSerializer;
 import org.bukkit.command.CommandSender;
 import org.jetbrains.annotations.NotNull;
@@ -19,5 +20,15 @@ public final class AdventureUtils {
 
     public static Component fromJson(String json) {
         return gson.deserialize(json);
+    }
+
+    // required since this method is absent on 1.18 and lower
+    public static Component decorationIfAbsent(Component component, TextDecoration decoration, TextDecoration.State state) {
+        final TextDecoration.State oldState = component.decoration(decoration);
+        if (oldState == TextDecoration.State.NOT_SET) {
+            return component.style(component.style().decoration(decoration, state));
+        }
+        return component;
+
     }
 }

@@ -2,7 +2,7 @@ plugins {
     id("buildlogic.java-17")
     id("buildlogic.fatjar")
     id("buildlogic.plugin-yml")
-    alias(libs.plugins.runTask.paper)
+    id("buildlogic.run-paper")
 }
 
 repositories {
@@ -25,14 +25,9 @@ bukkit {
 }
 
 tasks.runServer {
-    minecraftVersion("1.18.2")
+    javaLauncher = javaToolchains.launcherFor {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
 
-    jvmArgs = jvmArgs.plus(
-        arrayOf(
-            "-DIReallyKnowWhatIAmDoingISwear",
-            "-DPaper.IgnoreJavaVersion=true",
-            "-Dcom.mojang.eula.agree=true",
-            "-Dfile.encoding=UTF-8",
-        )
-    )
+    minecraftVersion("1.21.11")
 }
