@@ -1,73 +1,72 @@
 plugins {
-    java
-    id("com.gradleup.shadow") version("8.3.5")
-    id("com.github.ben-manes.versions") version("0.51.0")
+    id("buildlogic.java-21")
+    alias(libs.plugins.jvmdowngrader)
 }
-
-// Change to true when releasing
-val release = false
-val majorVersion = "1.14.2"
-val minorVersion = if (release) "Release" else "DEV-" + System.getenv("BUILD_NUMBER")
-
-group = "com.extendedclip"
-version = "$majorVersion-$minorVersion"
 
 repositories {
     mavenCentral()
-    maven("https://s01.oss.sonatype.org/content/repositories/snapshots/")
-    maven("https://repo.extendedclip.com/content/repositories/placeholderapi/")
-    maven("https://repo.glaremasters.me/repository/public/")
-    maven("https://nexus.phoenixdevt.fr/repository/maven-public/")
-    maven("https://repo.momirealms.net/releases/")
-    maven("https://repo.nexomc.com/releases/")
-    maven("https://repo.oraxen.com/releases")
-    maven("https://jitpack.io")
+    maven("https://repo.papermc.io/repository/maven-public/") // Paper API
+    maven("https://repo.extendedclip.com/releases/") // PlaceholderAPI
+    maven("https://jitpack.io") // Vault
+    maven("https://repo.momirealms.net/releases/") // CraftEngine
+    maven("https://maven.devs.beer/") // ItemsAdder
+    maven("https://nexus.phoenixdevt.fr/repository/maven-public/") // MMOItems, MythicLib
+    maven("https://repo.nexomc.com/releases") // Nexo
+    maven("https://repo.oraxen.com/releases") // Oraxen
+    maven("https://nexus.velocitypowered.com/repository/maven-public/") // authlib
 }
 
 dependencies {
-    compileOnly(libs.spigot)
-
-    compileOnly(libs.vault)
-    compileOnly(libs.authlib)
-
-    compileOnly(libs.headdb)
-    compileOnly(libs.craftengine.core)
-    compileOnly(libs.craftengine.bukkit)
-    compileOnly(libs.itemsadder)
-    compileOnly(libs.nexo)
-    compileOnly(libs.oraxen)
-    compileOnly(libs.mythiclib)
-    compileOnly(libs.mmoitems)
-    compileOnly(libs.score)
-    compileOnly(libs.sig)
-
-    compileOnly(libs.papi)
+    compileOnly(libs.paper.get1().get21())
+    compileOnly(libs.annotations)
+    compileOnly(libs.placeholderapi) { isTransitive = false }
+    compileOnly(libs.vault) { isTransitive = false }
+    compileOnly(libs.headDatabase) { isTransitive = false }
+    compileOnly(libs.itemsAdder) { isTransitive = false }
+    compileOnly(libs.mmoItems) { isTransitive = false }
+    compileOnly(libs.mythicLib) { isTransitive = false }
+    compileOnly(libs.oraxen) { isTransitive = false }
+    compileOnly(libs.simpleItemGenerator) { isTransitive = false }
+    compileOnly(libs.authlib) { isTransitive = false }
+    compileOnly(libs.nexo) { isTransitive = false }
+    compileOnly(libs.craftEngine.core) { isTransitive = false }
+    compileOnly(libs.craftEngine.bukkit) { isTransitive = false }
+    compileOnly(libs.minimessage) { isTransitive = false }
+    compileOnly(files(rootDir.resolve(".lib").resolve("ExecutableBlocks-API.jar")))
+    compileOnly(files(rootDir.resolve(".lib").resolve("SCore-API.jar")))
 
     implementation(libs.nashorn)
-    implementation(libs.adventure.platform)
-    implementation(libs.adventure.minimessage)
     implementation(libs.bstats)
-
-    compileOnly("org.jetbrains:annotations:23.0.0")
 }
 
-tasks {
-    shadowJar {
-        relocate("org.objectweb.asm", "com.extendedclip.deluxemenus.libs.asm")
-        relocate("org.openjdk.nashorn", "com.extendedclip.deluxemenus.libs.nashorn")
-        relocate("net.kyori", "com.extendedclip.deluxemenus.libs.adventure")
-        relocate("org.bstats", "com.extendedclip.deluxemenus.libs.bstats")
-        archiveFileName.set("DeluxeMenus-${rootProject.version}.jar")
-    }
-    java {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
-        disableAutoTargetJvm()
+jvmdg {
+    downgradeTo = JavaVersion.VERSION_17
+}
+
+val downgradedElements by configurations.creating {
+    isCanBeConsumed = true
+    isCanBeResolved = false
+
+    extendsFrom(
+        configurations.implementation.get()
+    )
+
+    attributes {
+        attribute(Usage.USAGE_ATTRIBUTE, objects.named(Usage.JAVA_RUNTIME))
+        attribute(Category.CATEGORY_ATTRIBUTE, objects.named(Category.LIBRARY))
+        attribute(Bundling.BUNDLING_ATTRIBUTE, objects.named(Bundling.EXTERNAL))
+        attribute(LibraryElements.LIBRARY_ELEMENTS_ATTRIBUTE, objects.named(LibraryElements.JAR))
     }
 
-    processResources {
-        filesMatching("plugin.yml") {
-            expand("version" to rootProject.version)
-        }
+    outgoing.artifact(tasks.downgradeJar)
+}
+
+tasks.register("printVersion") {
+    doLast {
+        println(version)
     }
+}
+
+allprojects {
+    version = "1.14.2-${System.getenv()["BUILD_ID"] ?: "DEV"}"
 }

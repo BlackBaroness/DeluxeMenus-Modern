@@ -1,5 +1,6 @@
 package com.extendedclip.deluxemenus.utils;
 
+import com.destroystokyo.paper.profile.ProfileProperty;
 import com.extendedclip.deluxemenus.DeluxeMenus;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;

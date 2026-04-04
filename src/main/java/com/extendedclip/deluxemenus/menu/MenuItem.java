@@ -112,7 +112,6 @@ public class MenuItem {
             }
         }
 
-
         if (ItemUtils.isPlayerItem(lowercaseStringMaterial)) {
             final ItemStack playerItem = INVENTORY_ITEM_ACCESSORS.get(lowercaseStringMaterial).apply(viewer.getInventory());
 

@@ -1,0 +1,8 @@
+org.bstats
+org.objectweb.asm
+org.openjdk.nashorn.api.linker
+org.openjdk.nashorn.api.scripting
+org.openjdk.nashorn.api.tree
+org.openjdk.nashorn.internal
+org.openjdk.nashorn.tools
+xyz.wagyourtail.jvmdg
