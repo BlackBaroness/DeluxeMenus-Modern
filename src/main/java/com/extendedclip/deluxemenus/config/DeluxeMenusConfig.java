@@ -35,6 +35,7 @@ import com.extendedclip.deluxemenus.utils.LocationUtils;
 import com.extendedclip.deluxemenus.utils.VersionHelper;
 import com.google.common.base.Enums;
 import com.google.common.primitives.Ints;
+import io.github.blackbaroness.deluxemenusmodern.LegacySupport;
 import org.bukkit.DyeColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -708,7 +709,7 @@ public class DeluxeMenusConfig {
 
                     try {
                         color = DyeColor.valueOf(metaParts[0].toUpperCase());
-                        type = PatternType.valueOf(metaParts[1].toUpperCase());
+                        type = LegacySupport.resolvePatternType(metaParts[1].toUpperCase());
                     } catch (IllegalArgumentException exception) {
                         plugin.debug(DebugLevel.HIGHEST, Level.WARNING, "Banner Meta for item: " + key + ", meta entry: " + e + " is invalid! Skipping this entry!");
 

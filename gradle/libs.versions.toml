@@ -1,16 +1,10 @@
 [versions]
-adventure-platform = "4.4.1"
 craftEngine = "0.0.67"
 
 [libraries]
-paper-1-21 = { module = "io.papermc.paper:paper-api", version = "1.21.11-R0.1-SNAPSHOT" }
+paper-1-21 = { module = "io.papermc.paper:paper-api", version = "1.21.4-R0.1-SNAPSHOT" }
 paper-1-18 = { module = "io.papermc.paper:paper-api", version = "1.18.2-R0.1-SNAPSHOT" }
 paper-1-16 = { module = "com.destroystokyo.paper:paper-api", version = "1.16.5-R0.1-SNAPSHOT" }
-
-# Adventure
-adventure-platform-api = { module = "net.kyori:adventure-platform-api", version.ref = "adventure-platform" }
-adventure-platform-facet = { module = "net.kyori:adventure-platform-facet", version.ref = "adventure-platform" }
-adventure-platform-bukkit = { module = "net.kyori:adventure-platform-bukkit", version.ref = "adventure-platform" }
 
 # Misc
 minimessage = { module = "net.kyori:adventure-text-minimessage", version = "4.26.1" }

@@ -35,6 +35,7 @@ dependencies {
     compileOnly(files(rootDir.resolve(".lib").resolve("ExecutableBlocks-API.jar")))
     compileOnly(files(rootDir.resolve(".lib").resolve("SCore-API.jar")))
 
+    implementation(projects.legacySupport)
     implementation(libs.nashorn)
     implementation(libs.bstats)
 }
