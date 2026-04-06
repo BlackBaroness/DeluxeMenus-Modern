@@ -1,5 +1,10 @@
 ## DeluxeMenus-Modern
 
+Official pages:
+[spigotmc.org](https://www.spigotmc.org/resources/deluxemenus-modern.134022/)
+|
+[spigotmc.ru](https://spigotmc.ru/resources/deluxemenus-modern.5319/)
+
 A soft fork of [the original DeluxeMenus](https://github.com/HelpChat/DeluxeMenus) with a few improvements:
 
 - **Supports MiniMessage in menu title and items**<br>
@@ -51,3 +56,9 @@ lore:
 ```
 
 ![](.github/minimessage_demonstration.webp)
+
+---
+
+[SpigotMC.ORG page]()
+
+[SpigotMC.RU page]()
