@@ -13,6 +13,7 @@ public class MenuOptions {
 
     private final String name;
     private final String title;
+    private final boolean modernUseMiniMessageForTitle;
     private final InventoryType type;
     private final int size;
     private final int updateInterval;
@@ -35,6 +36,7 @@ public class MenuOptions {
     private MenuOptions(final @NotNull MenuOptionsBuilder builder) {
         this.name = builder.name;
         this.title = builder.title;
+        this.modernUseMiniMessageForTitle = builder.modernUseMiniMessageForTitle;
         this.type = builder.type;
         this.size = builder.size;
         this.updateInterval = builder.updateInterval;
@@ -65,6 +67,10 @@ public class MenuOptions {
 
     public @NotNull String title() {
         return this.title;
+    }
+
+    public boolean modernUseMiniMessageForTitle() {
+        return this.modernUseMiniMessageForTitle;
     }
 
     public @NotNull InventoryType type() {
@@ -155,6 +161,7 @@ public class MenuOptions {
 
         private String name;
         private String title;
+        private boolean modernUseMiniMessageForTitle;
         private InventoryType type = InventoryType.CHEST;
         private int size = 9;
         private int updateInterval = 10;
@@ -186,6 +193,11 @@ public class MenuOptions {
 
         public MenuOptionsBuilder title(final @NotNull String title) {
             this.title = title;
+            return this;
+        }
+
+        public MenuOptionsBuilder modernUseMiniMessageForTitle(final boolean modernUseMiniMessageForTitle) {
+            this.modernUseMiniMessageForTitle = modernUseMiniMessageForTitle;
             return this;
         }
 

@@ -416,6 +416,7 @@ public class DeluxeMenusConfig {
         }
 
         final MenuOptions.MenuOptionsBuilder builder = MenuOptions.builder(key, title);
+        builder.modernUseMiniMessageForTitle(c.getBoolean(pre + "modern_use_minimessage_for_title", false));
 
         InventoryType type = InventoryType.CHEST;
 

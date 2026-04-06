@@ -15,6 +15,7 @@ import java.util.*;
 import java.util.Map.Entry;
 import java.util.logging.Level;
 
+import io.github.blackbaroness.deluxemenusmodern.MiniMessageProvider;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryType;
@@ -338,14 +339,23 @@ public class Menu {
 
             this.options.openHandler().ifPresent(h -> h.onClick(holder));
 
-            String title = StringUtils.color(holder.setPlaceholdersAndArguments(this.options.title()));
+            final boolean modernUseMiniMessageForTitle = this.options.modernUseMiniMessageForTitle();
 
-            Inventory inventory;
-
-            if (this.options.type() != InventoryType.CHEST) {
-                inventory = Bukkit.createInventory(holder, this.options.type(), title);
+            final Inventory inventory;
+            if (modernUseMiniMessageForTitle) {
+                final var title = MiniMessageProvider.get().deserialize(holder.setPlaceholdersAndArguments(this.options.title()));
+                if (this.options.type() != InventoryType.CHEST) {
+                    inventory = Bukkit.createInventory(holder, this.options.type(), title);
+                } else {
+                    inventory = Bukkit.createInventory(holder, this.options.size(), title);
+                }
             } else {
-                inventory = Bukkit.createInventory(holder, this.options.size(), title);
+                final var title = StringUtils.color(holder.setPlaceholdersAndArguments(this.options.title()));
+                if (this.options.type() != InventoryType.CHEST) {
+                    inventory = Bukkit.createInventory(holder, this.options.type(), title);
+                } else {
+                    inventory = Bukkit.createInventory(holder, this.options.size(), title);
+                }
             }
 
             holder.setInventory(inventory);

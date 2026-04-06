@@ -1,6 +1,7 @@
 open_command: modernmenu
 size: 9
-menu_title: 'Modern Menu'
+menu_title: 'Modern Menu <white><sprite:blocks:block/stone> <head:Notch></white> <rainbow>[IIIIIIIIII]</rainbow>'
+modern_use_minimessage_for_title: true
 
 open_requirement:
   requirements:
@@ -11,17 +12,18 @@ open_requirement:
         - '[message] &cYou don''t have permission to do that!'
 
 items:
-  'teststone':
-    material: STONE
-    data: 1
+  'first-item':
+    material: PURPLE_STAINED_GLASS_PANE
     slot: 0
     modern_use_minimessage: true
-    display_name: "<green>This is a special stone"
+    display_name: "<sprite:items:item/apple> <gradient:green:blue>||||||||||||||||||||||||</gradient> <sprite:items:item/golden_apple>"
     lore:
-      - "<red>Test1"
-      - "<yellow>Test2"
-      - "<rainbow>Test3"
-      - "<shadow:yellow>Hello <shadow:aqua:0.5>World</shadow>!"
-      - "<shadow:#FF5555>This is a <shadow:#55FF55>test!"
-      - "<shadow:#000000FF><b>Thicc"
-      - "<b>and here is a sprite <sprite:\"minecraft:items\":item/porkchop>."
+      - "<white>Simple color: <red>IIIIIIIIIIIIII<red> <gray>\\<red>"
+      - "<gray>-</gray> <white>HEX color: <color:#00ffbb>IIIIIIIIIIIIII</color> <gray>\\<color>"
+      - "<gray>---</gray> <white>Shadow: <white><shadow:aqua:0.8>IIIIIIIIIIIIII</white> <gray>\\<shadow>"
+      - "<gray>--</gray> <white>Gradient: <gradient:#00ffbb:#ff9900>IIIIIIIIIIIIII</gradient> <gray>\\<gradient>"
+      - "<gray>---</gray> <white>Rainbow: <rainbow>IIIIIIIIIIIIII</rainbow> <gray>\\<rainbow>"
+      - "<gray>----</gray> <white>Sprite: <sprite:blocks:block/stone> <gray>\\<sprite>"
+      - "<gray>-----</gray> <white>Head: <head:Notch> <gray>\\<head>"
+      - "<gray>-----</gray> <white>Font: <font:uniform>IIIIIIIIIIIIII</font> <gray>\\<font>"
+      - "<gray></gray><white>Decorations: <white><b>I</b> <i>I</i> <u>I</u> <st>I</st> <obf>I</obf></white>"
