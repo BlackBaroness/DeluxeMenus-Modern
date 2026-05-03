@@ -1,13 +1,13 @@
 [versions]
-craftEngine = "0.0.67"
+craftEngine = "0.0.67.11"
 
 [libraries]
-paper-1-21 = { module = "io.papermc.paper:paper-api", version = "1.21.4-R0.1-SNAPSHOT" }
-paper-1-18 = { module = "io.papermc.paper:paper-api", version = "1.18.2-R0.1-SNAPSHOT" }
+paper-1-21 = { module = "io.papermc.paper:paper-api", version = "26.1.2.build.53-stable" }
+paper-1-18 = { module = "io.papermc.paper:paper-api", version = "26.1.2.build.53-stable" }
 paper-1-16 = { module = "com.destroystokyo.paper:paper-api", version = "1.16.5-R0.1-SNAPSHOT" }
 
 # Misc
-minimessage = { module = "net.kyori:adventure-text-minimessage", version = "4.26.1" }
+minimessage = { module = "net.kyori:adventure-text-minimessage", version = "5.0.1" }
 placeholderapi = { module = "me.clip:placeholderapi", version = "2.12.2" }
 annotations = { module = "org.jetbrains:annotations", version = "26.1.0" }
 nashorn = { module = "org.openjdk.nashorn:nashorn-core", version = "15.7" }
@@ -17,8 +17,8 @@ headDatabase = { module = "com.arcaniax:HeadDatabase-API", version = "1.3.2" }
 itemsAdder = { module = "dev.lone:api-itemsadder", version = "4.0.10" }
 mmoItems = { module = "net.Indyuce:MMOItems-API", version = "6.9.5-SNAPSHOT" }
 mythicLib = { module = "io.lumine:MythicLib-dist", version = "1.7.1-SNAPSHOT" }
-nexo = { module = "com.nexomc:nexo", version = "1.21.0" }
-oraxen = { module = "io.th0rgal:oraxen", version = "1.211.0" }
+nexo = { module = "com.nexomc:nexo", version = "1.23" }
+oraxen = { module = "io.th0rgal:oraxen", version = "1.213.0" }
 simpleItemGenerator = { module = "io.github.valerashimchuck:simpleitemgenerator-api", version = "1.10.0" }
 authlib = { module = "com.mojang:authlib", version = "3.11.50" }
 jvmdowngrader = { module = "xyz.wagyourtail.jvmdowngrader:jvmdowngrader-java-api", version = "1.3.6" }
@@ -26,7 +26,7 @@ craftEngine-core = { module = "net.momirealms:craft-engine-core", version.ref = 
 craftEngine-bukkit = { module = "net.momirealms:craft-engine-bukkit", version.ref = "craftEngine" }
 
 [plugins]
-lombok = { id = "io.freefair.lombok", version = "9.2.0" }
+lombok = { id = "io.freefair.lombok", version = "9.5.0" }
 pluginYml-bukkit = { id = "de.eldoria.plugin-yml.bukkit", version = "0.9.0" }
 shadow = { id = "com.gradleup.shadow", version = "9.4.1" }
 runTask-paper = { id = "xyz.jpenilla.run-paper", version = "3.0.2" }
