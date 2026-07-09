@@ -1,5 +1,5 @@
 [versions]
-craftEngine = "26.7.1"
+craftEngine = "26.7.2"
 
 [libraries]
 paper-1-21 = { module = "io.papermc.paper:paper-api", version = "26.1.2.build.74-stable" }
